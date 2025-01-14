@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 206382085517645727}
   - component: {fileID: 2397440290187990645}
   - component: {fileID: 9067754558846376899}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: NetPlayerArmature
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -269,6 +269,7 @@ MonoBehaviour:
   SprintSpeed: 5.335
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
+  IsGrabbing: 0
   LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
   FootstepAudioClips:
   - {fileID: 8300000, guid: 72f526a6a9890f643a88e85a61c86c8a, type: 3}
@@ -284,6 +285,7 @@ MonoBehaviour:
   FootstepAudioVolume: 0.3
   JumpHeight: 1.2
   Gravity: -15
+  activeGravity: 1
   JumpTimeout: 0.3
   FallTimeout: 0.15
   Grounded: 1
@@ -537,6 +539,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea2e8a3ceffc9f43bc125d7a08dc124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  positionOffset: {x: 0, y: 1.75, z: 0}
+  firstMaxDir: 0.5
+  secondMaxDir: 1
+  movePoint: 0.25
+  scr_thirdPersonController: {fileID: 6034795384507169298}
 --- !u!1 &880121003961491598
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,9 @@
-﻿ using UnityEngine;
+﻿using System;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Composites;
+using Random = UnityEngine.Random;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -28,6 +31,9 @@ namespace StarterAssets
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
 
+        [Tooltip("Limit movement while grabbing")]
+        public bool IsGrabbing = false;
+        public event Action OnMoveWhileGrabbing;
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
@@ -38,6 +44,9 @@ namespace StarterAssets
 
         [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
         public float Gravity = -15.0f;
+
+        [Tooltip("Use when gravity needs to be turned off")]
+        public bool activeGravity = true;
 
         [Space(10)]
         [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
@@ -135,7 +144,7 @@ namespace StarterAssets
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -154,8 +163,6 @@ namespace StarterAssets
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
-
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -222,6 +229,17 @@ namespace StarterAssets
             // if there is no input, set the target speed to 0
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
+            if (IsGrabbing)
+            {
+                Debug.Log(_input.move);
+
+                if (_input.move != Vector2.zero)
+                {
+                    OnMoveWhileGrabbing?.Invoke();
+                }
+                return;
+            }
+
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
@@ -281,7 +299,12 @@ namespace StarterAssets
 
         private void JumpAndGravity()
         {
-            if (Grounded)
+            if (!activeGravity)
+            {
+                _verticalVelocity = 0f;
+            }
+
+            if (Grounded || !activeGravity)
             {
                 // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
