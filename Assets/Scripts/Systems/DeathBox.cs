@@ -8,6 +8,7 @@ public class DeathBox : MonoBehaviour
         {
             if (collider.GetComponent<PlayerManger>())
             {
+                Debug.Log(collider.name + ": collided");
                 collider.GetComponent<PlayerManger>().TeleportToCheckPointRpc();
             }
         }

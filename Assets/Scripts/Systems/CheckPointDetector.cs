@@ -1,10 +1,17 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class CheckPointDetector : NetworkBehaviour
+public class CheckPointDetector : MonoBehaviour
 {
     [SerializeField] private int checkPointId = 0;
     [SerializeField] private Transform checkPointTransform;
+    private Vector3 checkPointPosition;
+
+    private void Start()
+    {
+        checkPointPosition = checkPointTransform.position;
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
@@ -17,7 +24,7 @@ public class CheckPointDetector : NetworkBehaviour
     }
     private void SendCheckPointData(PlayerManger playerManger)
     {
-        playerManger.UpdateCheckPointRpc(checkPointId, checkPointTransform);
+        playerManger.UpdateCheckPointRpc(checkPointId, checkPointPosition);
     }
-
 }
+

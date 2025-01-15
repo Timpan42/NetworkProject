@@ -3,13 +3,17 @@ using System.Collections;
 using UnityEditor.Rendering;
 using UnityEngine;
 using TMPro;
+using Unity.Netcode;
+using Unity.VisualScripting;
 
-public class GameManger : MonoBehaviour
+public class GameManger : NetworkBehaviour
 {
     public static GameManger Instance { get; private set; }
     private bool isTimerOn = false;
-    private float currentTime;
-    [SerializeField] private TextMeshProUGUI timerText;
+    public NetworkVariable<float> currentTime;
+    public bool HasHost = false;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Transform joinButtonHoler;
 
     private void Awake()
     {
@@ -22,11 +26,25 @@ public class GameManger : MonoBehaviour
         {
             Destroy(this);
         }
-
     }
-    private void Start()
+
+    public void StartHost()
     {
+        NetworkManager.Singleton.StartHost();
+        WhenJoin();
         StartCoroutine(Timer());
+    }
+
+    public void StartClient()
+    {
+        NetworkManager.Singleton.StartClient();
+        WhenJoin();
+    }
+
+    private void WhenJoin()
+    {
+        mainCamera.enabled = false;
+        joinButtonHoler.gameObject.SetActive(false);
     }
 
     private IEnumerator Timer()
@@ -34,9 +52,7 @@ public class GameManger : MonoBehaviour
         isTimerOn = true;
         while (isTimerOn)
         {
-            currentTime += Time.deltaTime;
-            TimeSpan time = TimeSpan.FromSeconds(currentTime);
-            timerText.text = time.ToString(@"hh\:mm\:ss\:f");
+            currentTime.Value += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
     }
