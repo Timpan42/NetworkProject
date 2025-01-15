@@ -160,14 +160,14 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
-
-        private void Update()
-        {
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
-        }
-
+        /*
+                private void Update()
+                {
+                    JumpAndGravity();
+                    GroundedCheck();
+                    Move();
+                }
+        */
         private void LateUpdate()
         {
             CameraRotation();
@@ -182,7 +182,7 @@ namespace StarterAssets
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
         }
 
-        private void GroundedCheck()
+        public void GroundedCheck()
         {
             // set sphere position, with offset
             Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset,
@@ -218,7 +218,7 @@ namespace StarterAssets
                 _cinemachineTargetYaw, 0.0f);
         }
 
-        private void Move()
+        public void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
@@ -297,7 +297,8 @@ namespace StarterAssets
             }
         }
 
-        private void JumpAndGravity()
+
+        public void JumpAndGravity()
         {
             if (!activeGravity)
             {

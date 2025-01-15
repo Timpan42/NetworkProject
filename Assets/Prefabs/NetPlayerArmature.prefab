@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 8722131363954204846}
   - component: {fileID: 3200003611879090721}
   - component: {fileID: 454005422584819249}
+  - component: {fileID: 1562681995100210077}
   - component: {fileID: 7039440673819984475}
   - component: {fileID: 5030370599217722316}
   - component: {fileID: 4319427518642009884}
@@ -448,6 +449,20 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1562681995100210077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833674627695118961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e0746501acf214d81665eee37a14fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  scr_thirdPersonController: {fileID: 6034795384507169298}
 --- !u!114 &7039440673819984475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,6 +506,7 @@ MonoBehaviour:
   playerInput: {fileID: 454005422584819249}
   mainCamera: {fileID: 4218426240903978785}
   cinemaCamera: {fileID: 3378033119029095693}
+  clientPlayerInput: {fileID: 1562681995100210077}
 --- !u!114 &4319427518642009884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   NetworkTransformExpanded: 1
-  AuthorityMode: 1
+  AuthorityMode: 0
   TickSyncChildren: 0
   UseUnreliableDeltas: 0
   SyncPositionX: 1
