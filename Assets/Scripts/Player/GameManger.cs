@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using UnityEditor.Rendering;
 using UnityEngine;
+using TMPro;
 
 public class GameManger : MonoBehaviour
 {
     public static GameManger Instance { get; private set; }
     private bool isTimerOn = false;
     private float currentTime;
+    [SerializeField] private TextMeshProUGUI timerText;
+
     private void Awake()
     {
         if (Instance == null)
@@ -33,8 +36,7 @@ public class GameManger : MonoBehaviour
         {
             currentTime += Time.deltaTime;
             TimeSpan time = TimeSpan.FromSeconds(currentTime);
-            string str = time.ToString(@"hh\:mm\:ss\:fff");
-            Debug.Log(str);
+            timerText.text = time.ToString(@"hh\:mm\:ss\:f");
             yield return new WaitForEndOfFrame();
         }
     }

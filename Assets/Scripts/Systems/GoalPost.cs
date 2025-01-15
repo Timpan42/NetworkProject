@@ -8,7 +8,7 @@ public class GoalPost : MonoBehaviour
         {
             if (collider.GetComponent<PlayerManger>())
             {
-                collider.GetComponent<PlayerManger>().UpdatePlayerInGoal(true);
+                collider.GetComponent<PlayerManger>().UpdatePlayerInGoalRpc(true);
                 Debug.Log("You win");
             }
         }

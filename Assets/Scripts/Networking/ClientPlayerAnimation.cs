@@ -3,7 +3,5 @@ using UnityEngine;
 
 public class ClientPlayerAnimation : NetworkAnimator
 {
-
     protected override bool OnIsServerAuthoritative() => false;
-    
 }

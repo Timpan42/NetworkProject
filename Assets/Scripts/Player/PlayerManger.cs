@@ -1,12 +1,15 @@
 using System.Threading.Tasks;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerManger : MonoBehaviour
+public class PlayerManger : NetworkBehaviour
 {
     private float playerTimer = 0;
     private CheckPoint checkPoint = new();
     private bool playerInGoal = false;
-    public void UpdatePlayerTimer(float timeAmount)
+
+    //[Rpc(SendTo.Server)]
+    public void UpdatePlayerTimerRpc(float timeAmount)
     {
         playerTimer += timeAmount;
     }
@@ -16,19 +19,22 @@ public class PlayerManger : MonoBehaviour
         return playerTimer;
     }
 
-    public void UpdateCheckPoint(int checkPointId, Transform checkPointTransform)
+    [Rpc(SendTo.Server)]
+    public void UpdateCheckPointRpc(int checkPointId, Transform checkPointTransform)
     {
         checkPoint.currentCheckPointId = checkPointId;
         checkPoint.currentCheckPointTransform = checkPointTransform;
     }
-    public async void TeleportToCheckPoint()
+
+    // [Rpc(SendTo.Server)]
+    public void TeleportToCheckPointRpc()
     {
         Debug.Log(checkPoint.currentCheckPointTransform.position);
-        await Task.Delay(100);
         transform.position = checkPoint.currentCheckPointTransform.position;
     }
 
-    public void UpdatePlayerInGoal(bool state)
+    //[Rpc(SendTo.Server)]
+    public void UpdatePlayerInGoalRpc(bool state)
     {
         playerInGoal = state;
     }

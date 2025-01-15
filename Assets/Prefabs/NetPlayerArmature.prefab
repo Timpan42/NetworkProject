@@ -179,8 +179,8 @@ GameObject:
   - component: {fileID: 454005422584819249}
   - component: {fileID: 7039440673819984475}
   - component: {fileID: 5030370599217722316}
-  - component: {fileID: 206382085517645727}
-  - component: {fileID: 2397440290187990645}
+  - component: {fileID: 4319427518642009884}
+  - component: {fileID: 9037027383853048128}
   - component: {fileID: 9067754558846376899}
   m_Layer: 3
   m_Name: NetPlayerArmature
@@ -489,7 +489,7 @@ MonoBehaviour:
   playerInput: {fileID: 454005422584819249}
   mainCamera: {fileID: 4218426240903978785}
   cinemaCamera: {fileID: 3378033119029095693}
---- !u!114 &206382085517645727
+--- !u!114 &4319427518642009884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -504,7 +504,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   TransitionStateInfoList: []
   m_Animator: {fileID: 1603872863067950308}
---- !u!114 &2397440290187990645
+--- !u!114 &9037027383853048128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -513,11 +513,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 833674627695118961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a833c97564fac54a9f10792b3155da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  NetworkTransformExpanded: 0
+  NetworkTransformExpanded: 1
   AuthorityMode: 1
   TickSyncChildren: 0
   UseUnreliableDeltas: 0
@@ -2932,7 +2932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.00000023841858
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.z
