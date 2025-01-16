@@ -12,6 +12,10 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool EmotOne;
+		public bool EmotTwo;
+		public bool EmotThree;
+		public bool EmotFour;
 		public Vector3 rotation;
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -43,6 +47,22 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+		public void OnEmotOne(InputValue value)
+		{
+			EmotOneInput(value.isPressed);
+		}
+		public void OnEmotTwo(InputValue value)
+		{
+			EmotTwoInput(value.isPressed);
+		}
+		public void OnEmotThree(InputValue value)
+		{
+			EmotThreeInput(value.isPressed);
+		}
+		public void OnEmotFour(InputValue value)
+		{
+			EmotFourInput(value.isPressed);
+		}
 #endif
 
 
@@ -65,7 +85,22 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
-
+		public void EmotOneInput(bool newEmotState)
+		{
+			EmotOne = newEmotState;
+		}
+		public void EmotTwoInput(bool newEmotState)
+		{
+			EmotTwo = newEmotState;
+		}
+		public void EmotThreeInput(bool newEmotState)
+		{
+			EmotThree = newEmotState;
+		}
+		public void EmotFourInput(bool newEmotState)
+		{
+			EmotFour = newEmotState;
+		}
 		public void CameraRotationInput(Vector3 newRotation)
 		{
 			rotation = newRotation;
