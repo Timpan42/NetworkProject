@@ -1391,6 +1391,7 @@ MonoBehaviour:
   HasHost: 0
   mainCamera: {fileID: 1237919218}
   joinButtonHoler: {fileID: 1848268102}
+  goalPost: {fileID: 1673594340}
 --- !u!4 &1583671871
 Transform:
   m_ObjectHideFlags: 0
@@ -1462,6 +1463,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1673594340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7500697467175826752, guid: 226bae49598158f4ba9fd833b7884e1a, type: 3}
+  m_PrefabInstance: {fileID: 8298197921386320347}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e965af81a7cdbe4bbf32ac959220be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1848268101
 GameObject:
   m_ObjectHideFlags: 0
@@ -2273,6 +2285,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1237919219}
   - {fileID: 1602761344}
+  - {fileID: 1966733227}
   - {fileID: 1583671871}
   - {fileID: 237636220}
   - {fileID: 410087041}
@@ -2290,4 +2303,3 @@ SceneRoots:
   - {fileID: 6735022406866075070}
   - {fileID: 2211829046556067553}
   - {fileID: 8298197921386320347}
-  - {fileID: 1966733227}

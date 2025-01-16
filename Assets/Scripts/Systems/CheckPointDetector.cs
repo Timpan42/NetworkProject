@@ -16,13 +16,13 @@ public class CheckPointDetector : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            if (collider.GetComponent<PlayerManger>())
+            if (collider.GetComponent<ClientPlayerManager>())
             {
-                SendCheckPointData(collider.GetComponent<PlayerManger>());
+                SendCheckPointData(collider.GetComponent<ClientPlayerManager>());
             }
         }
     }
-    private void SendCheckPointData(PlayerManger playerManger)
+    private void SendCheckPointData(ClientPlayerManager playerManger)
     {
         playerManger.UpdateCheckPointRpc(checkPointId, checkPointPosition);
     }

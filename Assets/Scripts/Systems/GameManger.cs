@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using Unity.Netcode;
 using Unity.VisualScripting;
+using UnityEngine.Accessibility;
 
 public class GameManger : NetworkBehaviour
 {
@@ -14,6 +15,7 @@ public class GameManger : NetworkBehaviour
     public bool HasHost = false;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform joinButtonHoler;
+    [SerializeField] private GoalPost goalPost;
 
     private void Awake()
     {
@@ -27,6 +29,17 @@ public class GameManger : NetworkBehaviour
             Destroy(this);
         }
     }
+
+    private void Start()
+    {
+        goalPost.OnPlayerWin += PlayerWinRpc;
+    }
+    [Rpc(SendTo.Server)]
+    private void PlayerWinRpc(ulong playerClientId)
+    {
+        Debug.Log(playerClientId + " this player wins");
+    }
+
     public void StartHost()
     {
         NetworkManager.Singleton.StartHost();

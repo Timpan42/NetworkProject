@@ -6,10 +6,10 @@ public class DeathBox : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            if (collider.GetComponent<PlayerManger>())
+            if (collider.GetComponent<ClientPlayerManager>())
             {
                 Debug.Log(collider.name + ": collided");
-                collider.GetComponent<PlayerManger>().TeleportToCheckPointRpc();
+                collider.GetComponent<ClientPlayerManager>().TeleportToCheckPointRpc();
             }
         }
     }
