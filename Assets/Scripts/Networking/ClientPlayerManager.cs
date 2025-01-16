@@ -32,6 +32,8 @@ public class ClientPlayerManager : NetworkBehaviour
             ChangeComponentState(false);
             characterController.enabled = true;
             thirdPersonController.enabled = true;
+            clientPlayerInput.enabled = true;
+
         }
         else
         {
@@ -47,6 +49,7 @@ public class ClientPlayerManager : NetworkBehaviour
         thirdPersonController.enabled = state;
         playerInput.enabled = state;
         mainCamera.enabled = state;
+        mainCamera.GetComponent<AudioListener>().enabled = state;
         cinemaCamera.enabled = state;
         clientPlayerInput.enabled = state;
     }

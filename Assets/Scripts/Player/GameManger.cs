@@ -27,10 +27,10 @@ public class GameManger : NetworkBehaviour
             Destroy(this);
         }
     }
-
     public void StartHost()
     {
         NetworkManager.Singleton.StartHost();
+        HasHost = true;
         WhenJoin();
         StartCoroutine(Timer());
     }
@@ -44,6 +44,7 @@ public class GameManger : NetworkBehaviour
     private void WhenJoin()
     {
         mainCamera.enabled = false;
+        mainCamera.GetComponent<AudioListener>().enabled = false;
         joinButtonHoler.gameObject.SetActive(false);
     }
 

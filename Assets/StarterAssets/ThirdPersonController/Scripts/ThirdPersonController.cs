@@ -160,14 +160,14 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
-        /*
-                private void Update()
-                {
-                    JumpAndGravity();
-                    GroundedCheck();
-                    Move();
-                }
-        */
+
+        private void Update()
+        {
+            JumpAndGravity();
+            GroundedCheck();
+            Move();
+        }
+
         private void LateUpdate()
         {
             CameraRotation();
@@ -274,7 +274,7 @@ namespace StarterAssets
             if (_input.move != Vector2.zero)
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
-                                  _mainCamera.transform.eulerAngles.y;
+                                  _input.rotation.y;
                 float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
                     RotationSmoothTime);
 
@@ -296,8 +296,6 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
         }
-
-
         public void JumpAndGravity()
         {
             if (!activeGravity)

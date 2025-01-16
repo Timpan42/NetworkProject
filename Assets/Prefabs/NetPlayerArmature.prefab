@@ -348,6 +348,7 @@ MonoBehaviour:
   look: {x: 0, y: 0}
   jump: 0
   sprint: 0
+  rotation: {x: 0, y: 0, z: 0}
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -462,7 +463,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  scr_thirdPersonController: {fileID: 6034795384507169298}
+  scr_starterAssetsInputs: {fileID: 0}
+  mainCamera: {fileID: 4218426240903978785}
 --- !u!114 &7039440673819984475
 MonoBehaviour:
   m_ObjectHideFlags: 0
