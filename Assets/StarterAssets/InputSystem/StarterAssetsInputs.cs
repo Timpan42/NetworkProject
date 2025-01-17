@@ -12,10 +12,10 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
-		public bool EmotOne;
-		public bool EmotTwo;
-		public bool EmotThree;
-		public bool EmotFour;
+		public bool EmoteOne;
+		public bool EmoteTwo;
+		public bool EmoteThree;
+		public bool EmoteFour;
 		public Vector3 rotation;
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -23,6 +23,7 @@ namespace StarterAssets
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+
 
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
@@ -47,21 +48,21 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
-		public void OnEmotOne(InputValue value)
+		public void OnEmoteOne(InputValue value)
 		{
-			EmotOneInput(value.isPressed);
+			EmoteOneInput(value.isPressed);
 		}
-		public void OnEmotTwo(InputValue value)
+		public void OnEmoteTwo(InputValue value)
 		{
-			EmotTwoInput(value.isPressed);
+			EmoteTwoInput(value.isPressed);
 		}
-		public void OnEmotThree(InputValue value)
+		public void OnEmoteThree(InputValue value)
 		{
-			EmotThreeInput(value.isPressed);
+			EmoteThreeInput(value.isPressed);
 		}
-		public void OnEmotFour(InputValue value)
+		public void OnEmoteFour(InputValue value)
 		{
-			EmotFourInput(value.isPressed);
+			EmoteFourInput(value.isPressed);
 		}
 #endif
 
@@ -85,21 +86,22 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
-		public void EmotOneInput(bool newEmotState)
+		public void EmoteOneInput(bool newEmoteState)
 		{
-			EmotOne = newEmotState;
+			EmoteOne = newEmoteState;
 		}
-		public void EmotTwoInput(bool newEmotState)
+		public void EmoteTwoInput(bool newEmoteState)
 		{
-			EmotTwo = newEmotState;
+			EmoteTwo = newEmoteState;
+
 		}
-		public void EmotThreeInput(bool newEmotState)
+		public void EmoteThreeInput(bool newEmoteState)
 		{
-			EmotThree = newEmotState;
+			EmoteThree = newEmoteState;
 		}
-		public void EmotFourInput(bool newEmotState)
+		public void EmoteFourInput(bool newEmoteState)
 		{
-			EmotFour = newEmotState;
+			EmoteFour = newEmoteState;
 		}
 		public void CameraRotationInput(Vector3 newRotation)
 		{

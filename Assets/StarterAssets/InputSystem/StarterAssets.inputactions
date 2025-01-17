@@ -27,7 +27,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "8c4abdf8-4099-493a-aa1a-129acec7c3df",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -42,8 +42,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EmotOne",
-                    "type": "Button",
+                    "name": "EmoteOne",
+                    "type": "PassThrough",
                     "id": "099ef579-73f7-4bc6-b820-126e0fdcb7aa",
                     "expectedControlType": "",
                     "processors": "",
@@ -51,8 +51,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EmotTwo",
-                    "type": "Button",
+                    "name": "EmoteTwo",
+                    "type": "PassThrough",
                     "id": "44b5682f-e410-4c45-9f43-6a4ec4ffafa3",
                     "expectedControlType": "",
                     "processors": "",
@@ -60,8 +60,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EmotThree",
-                    "type": "Button",
+                    "name": "EmoteThree",
+                    "type": "PassThrough",
                     "id": "8e9f44bb-b023-4404-b734-9c8b2498a156",
                     "expectedControlType": "",
                     "processors": "",
@@ -69,8 +69,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EmotFour",
-                    "type": "Button",
+                    "name": "EmoteFour",
+                    "type": "PassThrough",
                     "id": "9555f43e-582f-4da5-a3cb-145fba0657c6",
                     "expectedControlType": "",
                     "processors": "",
@@ -261,8 +261,8 @@
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "EmotOne",
+                    "groups": ";KeyboardMouse",
+                    "action": "EmoteOne",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -272,8 +272,8 @@
                     "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "EmotTwo",
+                    "groups": ";KeyboardMouse",
+                    "action": "EmoteTwo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -283,8 +283,8 @@
                     "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "EmotThree",
+                    "groups": ";KeyboardMouse",
+                    "action": "EmoteThree",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -294,8 +294,8 @@
                     "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "EmotFour",
+                    "groups": ";KeyboardMouse",
+                    "action": "EmoteFour",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

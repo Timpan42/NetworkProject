@@ -20,7 +20,7 @@ public class ClientPlayerInput : NetworkBehaviour
             return;
         }
         PlayerMoveInputsRpc(scr_starterAssetsInputs.move, scr_starterAssetsInputs.look, scr_starterAssetsInputs.jump, scr_starterAssetsInputs.sprint, mainCamera.transform.eulerAngles);
-        PlayerEmotInputsRpc(scr_starterAssetsInputs.EmotOne, scr_starterAssetsInputs.EmotTwo, scr_starterAssetsInputs.EmotThree, scr_starterAssetsInputs.EmotFour);
+        PlayerEmoteInputsRpc(scr_starterAssetsInputs.EmoteOne, scr_starterAssetsInputs.EmoteTwo, scr_starterAssetsInputs.EmoteThree, scr_starterAssetsInputs.EmoteFour);
     }
 
     [Rpc(SendTo.Server)]
@@ -34,12 +34,12 @@ public class ClientPlayerInput : NetworkBehaviour
     }
 
     [Rpc(SendTo.Server)]
-    private void PlayerEmotInputsRpc(bool emotOne, bool emotTwo, bool emotThree, bool emotFour)
+    private void PlayerEmoteInputsRpc(bool emoteOne, bool emoteTwo, bool emoteThree, bool emoteFour)
     {
-        scr_starterAssetsInputs.EmotOneInput(emotOne);
-        scr_starterAssetsInputs.EmotTwoInput(emotTwo);
-        scr_starterAssetsInputs.EmotThreeInput(emotThree);
-        scr_starterAssetsInputs.EmotFourInput(emotFour);
+        scr_starterAssetsInputs.EmoteOneInput(emoteOne);
+        scr_starterAssetsInputs.EmoteTwoInput(emoteTwo);
+        scr_starterAssetsInputs.EmoteThreeInput(emoteThree);
+        scr_starterAssetsInputs.EmoteFourInput(emoteFour);
     }
 
 }
