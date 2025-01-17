@@ -61,11 +61,11 @@ public class EmotesManger : MonoBehaviour
                 goto default;
 
             case EmoteType.Signal:
-                emoteVisualizer.SignalEmote(emoteId);
+                emoteVisualizer.SignalEmoteRpc(emoteId);
                 goto default;
 
             case EmoteType.Animation:
-                emoteVisualizer.AnimationEmote(emoteId);
+                emoteVisualizer.AnimationEmoteRpc(emoteId);
                 goto default;
 
             default:

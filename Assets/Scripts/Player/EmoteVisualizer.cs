@@ -1,4 +1,5 @@
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class EmoteVisualizer : NetworkBehaviour
     [SerializeField] private EmoteAnimationScriptable[] emoteAnimationName;
     [SerializeField] private Image playerImage;
     private GameObject currentSignalObject;
+    [SerializeField] private Transform spawnSignalPoint;
     [SerializeField] private Animator animator;
     private string animationName;
 
@@ -46,19 +48,36 @@ public class EmoteVisualizer : NetworkBehaviour
         playerImage.sprite = null;
     }
 
-    public void SignalEmote(int emoteId)
+    [Rpc(SendTo.Server)]
+    public void SignalEmoteRpc(int emoteId)
+    {
+        foreach (EmoteSignalScriptable emote in emoteSignals)
+        {
+            if (emote.EmoteId == emoteId)
+            {
+                currentSignalObject = emote.EmoteSignal;
+                break;
+            }
+        }
+        if (currentSignalObject == null)
+        {
+            Debug.LogError("GameObject for Signal Emote dose not exist");
+            return;
+        }
+
+        currentSignalObject = Instantiate(currentSignalObject, spawnSignalPoint);
+    }
+
+    [Rpc(SendTo.Server)]
+    private void DeactivateSignalEmoteRpc()
+    {
+        Destroy(currentSignalObject);
+    }
+    public void AnimationEmoteRpc(int emoteId)
     {
 
     }
-    private void DeactivateSignalEmote()
-    {
-
-    }
-    public void AnimationEmote(int emoteId)
-    {
-
-    }
-    private void DeactivateAnimationEmote()
+    private void DeactivateAnimationEmoteRpc()
     {
 
     }
@@ -72,10 +91,10 @@ public class EmoteVisualizer : NetworkBehaviour
                 DeactivateImageEmoteRpc();
                 break;
             case EmotesManger.EmoteType.Signal:
-                DeactivateSignalEmote();
+                DeactivateSignalEmoteRpc();
                 break;
             case EmotesManger.EmoteType.Animation:
-                DeactivateAnimationEmote();
+                DeactivateAnimationEmoteRpc();
                 break;
         }
     }
