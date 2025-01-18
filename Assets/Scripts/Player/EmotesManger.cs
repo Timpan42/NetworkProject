@@ -62,6 +62,7 @@ public class EmotesManger : MonoBehaviour
 
             case EmoteType.Signal:
                 emoteVisualizer.SignalEmoteRpc(emoteId);
+                Debug.Log("run");
                 goto default;
 
             case EmoteType.Animation:

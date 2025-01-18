@@ -500,6 +500,7 @@ MonoBehaviour:
   mainCamera: {fileID: 4218426240903978785}
   cinemaCamera: {fileID: 3378033119029095693}
   clientPlayerInput: {fileID: 1562681995100210077}
+  emotesManger: {fileID: 9171881822373536817}
 --- !u!114 &4319427518642009884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3082,7 +3083,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4767473697313407981, guid: 665cc4af457cf3340bdc625c6b87a9a3, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1683834797
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767473697313407981, guid: 665cc4af457cf3340bdc625c6b87a9a3, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2118820558
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4767473697313407981, guid: 665cc4af457cf3340bdc625c6b87a9a3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3398,6 +3408,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3008860426945130108, guid: 77d5a69f04fa16242ba53bbc98b0efa8, type: 3}
   m_PrefabInstance: {fileID: 6764261361088700479}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9171881822373536817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2492296209796449294, guid: 77d5a69f04fa16242ba53bbc98b0efa8, type: 3}
+  m_PrefabInstance: {fileID: 6764261361088700479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faba34c4aaa08864f983b117ebf7f0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9057803192246151368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3454,7 +3475,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1171505351378799101, guid: b2e057f9c821a914c95ef79e3a673e56, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2722838702
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171505351378799101, guid: b2e057f9c821a914c95ef79e3a673e56, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2118820558
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1171505351378799101, guid: b2e057f9c821a914c95ef79e3a673e56, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -48,7 +48,7 @@ public class EmoteVisualizer : NetworkBehaviour
         playerImage.sprite = null;
     }
 
-    [Rpc(SendTo.Server)]
+    [Rpc(SendTo.ClientsAndHost)]
     public void SignalEmoteRpc(int emoteId)
     {
         foreach (EmoteSignalScriptable emote in emoteSignals)
@@ -64,15 +64,15 @@ public class EmoteVisualizer : NetworkBehaviour
             Debug.LogError("GameObject for Signal Emote dose not exist");
             return;
         }
-
         currentSignalObject = Instantiate(currentSignalObject, spawnSignalPoint);
     }
 
-    [Rpc(SendTo.Server)]
+    [Rpc(SendTo.ClientsAndHost)]
     private void DeactivateSignalEmoteRpc()
     {
         Destroy(currentSignalObject);
     }
+
     public void AnimationEmoteRpc(int emoteId)
     {
 

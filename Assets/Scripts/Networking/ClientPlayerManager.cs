@@ -14,6 +14,7 @@ public class ClientPlayerManager : NetworkBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private CinemachineVirtualCamera cinemaCamera;
     [SerializeField] private ClientPlayerInput clientPlayerInput;
+    [SerializeField] private EmotesManger emotesManger;
     private float playerTimer = 0;
     private CheckPoint checkPoint = new();
     private bool playerInGoal = false;
@@ -58,6 +59,7 @@ public class ClientPlayerManager : NetworkBehaviour
         mainCamera.GetComponent<AudioListener>().enabled = state;
         cinemaCamera.enabled = state;
         clientPlayerInput.enabled = state;
+        emotesManger.enabled = state;
     }
 
     //[Rpc(SendTo.Server)]
