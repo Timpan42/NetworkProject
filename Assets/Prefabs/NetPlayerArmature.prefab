@@ -497,10 +497,13 @@ MonoBehaviour:
   characterController: {fileID: 6706630344389792245}
   thirdPersonController: {fileID: 6034795384507169298}
   playerInput: {fileID: 454005422584819249}
+  starterAssetsInputs: {fileID: 3200003611879090721}
   mainCamera: {fileID: 4218426240903978785}
   cinemaCamera: {fileID: 3378033119029095693}
   clientPlayerInput: {fileID: 1562681995100210077}
   emotesManger: {fileID: 9171881822373536817}
+  uiManger: {fileID: 0}
+  animator: {fileID: 1603872863067950308}
 --- !u!114 &4319427518642009884
 MonoBehaviour:
   m_ObjectHideFlags: 0

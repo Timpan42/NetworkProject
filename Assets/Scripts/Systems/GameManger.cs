@@ -1,18 +1,24 @@
 using System;
 using System.Collections;
-using UnityEditor.Rendering;
 using UnityEngine;
-using TMPro;
 using Unity.Netcode;
-using Unity.VisualScripting;
-using UnityEngine.Accessibility;
+using System.Threading.Tasks;
 
 public class GameManger : NetworkBehaviour
 {
+    public enum GameState
+    {
+        GameRunning,
+        PlayerWon
+    }
+    private GameState gameState;
+    public GameState GetGameState() => gameState;
     public static GameManger Instance { get; private set; }
+    public event Action OnPlayerWin;
     private bool isTimerOn = false;
     public NetworkVariable<float> currentTime;
     public bool HasHost = false;
+    public NetworkVariable<ulong> playerWonId;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform joinButtonHoler;
     [SerializeField] private GoalPost goalPost;
@@ -37,7 +43,24 @@ public class GameManger : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void PlayerWinRpc(ulong playerClientId)
     {
-        Debug.Log(playerClientId + " this player wins");
+        NetworkObject networkObject = NetworkManager.Singleton.ConnectedClients[playerClientId].PlayerObject;
+        ClientPlayerManager playerManager = networkObject.GetComponent<ClientPlayerManager>();
+        playerWonId.Value = playerManager.OwnerClientId;
+        isTimerOn = false;
+        WaitForVariable();
+    }
+
+    private async void WaitForVariable()
+    {
+        await Task.Delay(500);
+        gameState = GameState.PlayerWon;
+        PlayerWinInvokeRpc();
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    private void PlayerWinInvokeRpc()
+    {
+        OnPlayerWin?.Invoke();
     }
 
     public void StartHost()

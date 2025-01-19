@@ -11,13 +11,15 @@ public class ClientPlayerManager : NetworkBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private ThirdPersonController thirdPersonController;
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private StarterAssetsInputs starterAssetsInputs;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private CinemachineVirtualCamera cinemaCamera;
     [SerializeField] private ClientPlayerInput clientPlayerInput;
     [SerializeField] private EmotesManger emotesManger;
+    [SerializeField] private UiManger uiManger;
+    [SerializeField] private Animator animator;
     private float playerTimer = 0;
     private CheckPoint checkPoint = new();
-    private bool playerInGoal = false;
 
 
     private void Awake()
@@ -27,12 +29,15 @@ public class ClientPlayerManager : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        uiManger = GameObject.Find("UiManager").GetComponent<UiManger>();
         base.OnNetworkSpawn();
+
         enabled = IsClient;
 
         if (IsOwner)
         {
             ChangeComponentState(true);
+            GameManger.Instance.OnPlayerWin += OnPlayerWin;
         }
         else if (IsServer)
         {
@@ -46,8 +51,25 @@ public class ClientPlayerManager : NetworkBehaviour
         {
             enabled = false;
             ChangeComponentState(false);
-            return;
         }
+    }
+    private void OnPlayerWin()
+    {
+        if (GameManger.Instance.playerWonId.Value == OwnerClientId)
+        {
+            uiManger.UiWinText();
+        }
+        else
+        {
+            uiManger.UiLostText();
+        }
+        thirdPersonController.enabled = false;
+        clientPlayerInput.TernOffMovement();
+        animator.enabled = false;
+        starterAssetsInputs.enabled = false;
+        clientPlayerInput.enabled = false;
+        playerInput.enabled = false;
+
     }
 
     private void ChangeComponentState(bool state)
@@ -62,12 +84,6 @@ public class ClientPlayerManager : NetworkBehaviour
         emotesManger.enabled = state;
     }
 
-    //[Rpc(SendTo.Server)]
-    public void UpdatePlayerTimerRpc(float timeAmount)
-    {
-        playerTimer += timeAmount;
-    }
-
     public float GetPlayerTime()
     {
         return playerTimer;
@@ -76,7 +92,6 @@ public class ClientPlayerManager : NetworkBehaviour
     [Rpc(SendTo.Server)]
     public void UpdateCheckPointRpc(int checkPointId, Vector3 checkPointPosition)
     {
-        Debug.Log(name + "new checkpoint");
         checkPoint.currentCheckPointId = checkPointId;
         checkPoint.currentCheckPointPosition = checkPointPosition;
     }
@@ -92,12 +107,6 @@ public class ClientPlayerManager : NetworkBehaviour
     {
         await Task.Delay(100);
         thirdPersonController.enabled = true;
-    }
-
-    [Rpc(SendTo.Server)]
-    public void UpdatePlayerInGoalRpc(bool state)
-    {
-        playerInGoal = state;
     }
 
 }

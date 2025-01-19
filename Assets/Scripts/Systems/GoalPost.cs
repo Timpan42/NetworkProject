@@ -12,9 +12,7 @@ public class GoalPost : MonoBehaviour
             if (collider.GetComponent<ClientPlayerManager>())
             {
                 ClientPlayerManager player = collider.GetComponent<ClientPlayerManager>();
-                player.UpdatePlayerInGoalRpc(true);
                 OnPlayerWin?.Invoke(player.OwnerClientId);
-                Debug.Log("You win");
             }
         }
     }

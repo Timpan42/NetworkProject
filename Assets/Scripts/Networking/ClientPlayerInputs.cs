@@ -1,7 +1,6 @@
 using StarterAssets;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class ClientPlayerInput : NetworkBehaviour
 {
@@ -40,6 +39,11 @@ public class ClientPlayerInput : NetworkBehaviour
         scr_starterAssetsInputs.EmoteTwoInput(emoteTwo);
         scr_starterAssetsInputs.EmoteThreeInput(emoteThree);
         scr_starterAssetsInputs.EmoteFourInput(emoteFour);
+    }
+
+    public void TernOffMovement()
+    {
+        PlayerMoveInputsRpc(Vector2.zero, Vector2.zero, false, false, Vector3.zero);
     }
 
 }

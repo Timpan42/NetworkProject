@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Threading.Tasks;
 using StarterAssets;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class LedgeGrab : MonoBehaviour

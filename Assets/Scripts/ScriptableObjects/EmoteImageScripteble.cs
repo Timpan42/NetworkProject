@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "EmoteImageScr", menuName = "Scriptable Objects/EmoteImageScr")]
 public class EmoteImageScriptable : ScriptableObject
