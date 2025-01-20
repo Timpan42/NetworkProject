@@ -1,0 +1,4 @@
+W,A,S,D = Movement 
+Spacebar = Jump 
+Mouse = Look around
+1,2,3 = Emotes 
